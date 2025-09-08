@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
+const cors = require("cors");
+
+// setupt middlewares
+app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res, next) => {
   return res.json({ message: "hello world" });

@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server/server.js",
     "test": "jest --watchAll",
-    "start": "node  server/server.js"
+    "start": "node  server/server.js",
+    "client": "npm run dev --prefix client",
+    "server": "nodemon server/server.js",
+    "dev": "concurrently \"npm run server \" \"npm run client\""
   },
   "author": "",
   "license": "ISC",

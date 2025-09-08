@@ -1,0 +1,1 @@
+BASE_URL=https://stripe-payment-ibm6.onrender.com/

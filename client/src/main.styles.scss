@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --primary-color: black;
+  --font-sans: "Roboto", system-ui, -apple-system, Segoe UI, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  color: white;
+  font-family: var(--font-sans);
+}
+
+.heading {
+  font-size: 8rem;
+  &.center {
+    text-align: center;
+  }
+}

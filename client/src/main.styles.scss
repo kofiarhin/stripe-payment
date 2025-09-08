@@ -11,11 +11,25 @@ body {
   background-color: var(--primary-color);
   color: white;
   font-family: var(--font-sans);
+  text-align: center;
 }
 
 .heading {
-  font-size: 8rem;
+  font-size: 3rem;
   &.center {
     text-align: center;
+  }
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: rgb(15, 75, 120);
+  color: white;
+  transition: all ease-in-out 300ms;
+  &:hover {
+    background-color: white;
+    color: black;
   }
 }

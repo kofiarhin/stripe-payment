@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
-  return res.json({ message: "hello world" });
+  return res.json({ message: "welcome to stripe payment" });
 });
 
 app.post("/api/checkout", async (req, res, next) => {

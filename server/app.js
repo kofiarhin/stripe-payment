@@ -1,0 +1,14 @@
+const express = require("express");
+const app = express();
+const dotenv = require("dotenv").config();
+const stripe = require("stripe")(process.env.STRIPE_API_KEY);
+
+app.get("/", (req, res, next) => {
+  return res.json({ message: "hello world" });
+});
+
+app.post("/api/checkout", async (req, res, next) => {
+  return res.json({ message: "checkout session" });
+});
+
+module.exports = app;

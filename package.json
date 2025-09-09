@@ -9,6 +9,12 @@
     "server": "nodemon server/server.js",
     "dev": "concurrently \"npm run server \" \"npm run client\""
   },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/server/__test__/setup.js"
+    ],
+    "testEnvironment": "node"
+  },
   "author": "",
   "license": "ISC",
   "description": "",

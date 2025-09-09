@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv").config();
-const stripe = require("stripe")(process.env.STRIPE_API_KEY);
+const stripe = require("stripe")(process.env.STRIPE_API_SECRET);
 const cors = require("cors");
 
 // setupt middlewares
@@ -13,7 +13,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.post("/api/checkout", async (req, res, next) => {
-  return res.json({ message: "checkout session" });
+  return res.json({ message: "this is a testing message" });
 });
 
 module.exports = app;

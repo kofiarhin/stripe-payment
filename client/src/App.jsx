@@ -1,40 +1,19 @@
-import { useEffect } from "react";
-import { BASE_URL } from "./constants/constants";
-
+import React from "react";
+import Checkout from "./pages/Checkout/Checkout";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Success from "./pages/Success/Success";
+import Cancel from "./pages/Cancel/Cancel";
 const App = () => {
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(BASE_URL);
-      console.log(BASE_URL);
-      console.log(res.ok);
-    };
-
-    getData();
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const res = await fetch(`${BASE_URL}/api/checkout`, {
-      headers: {
-        "Content-type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({ name: "test product", amount: 20 }),
-    });
-
-    if (!res.ok) {
-      console.log("ërror");
-    }
-    const data = await res.json();
-    console.log(data);
-  };
   return (
     <div>
-      <h1 className="heading center">Hello World</h1>
-      <form onSubmit={handleSubmit}>
-        <button>Make Payment</button>
-      </form>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/cancel" element={<Cancel />} />
+        </Routes>
+      </Router>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_API_SECRET);
 
 const processPayment = async (data) => {
+  const clientUrl = process.env.CLIENT_URL;
   const line_items = data.map((item) => ({
     price_data: {
       currency: "gbp",
@@ -16,9 +17,8 @@ const processPayment = async (data) => {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items,
-      success_url:
-        "http://localhost:4000/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "http://localhost:4000/cancel",
+      success_url: `${clientUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${clientUrl}/cancel`,
     });
     return { url: session.url };
   } catch (error) {

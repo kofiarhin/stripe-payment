@@ -1,2 +1,46 @@
 frontend: https://stripe-payment-gray.vercel.app/
 backend: https://stripe-payment-ibm6.onrender.com/
+
+
+You are an AI coding assistant running in VS Code. Implement the Stripe Checkout session creation in the file named exactly: payment.js. Do not modify any other files. Do not add features beyond what is specified. Do not invent code, paths, variables, or dependencies not listed below.
+
+FILE TO UPDATE:
+- payment.js
+
+TASK:
+1) Initialize Stripe using the secret key from process.env.STRIPE_API_SECRET.
+2) Export an async function named processPayment(data) that:
+   - Accepts `data` as an array of items shaped like:
+     [
+       { name: "Product A", price: 20, quantity: 2 },
+       { name: "Product B", price: 15.5, quantity: 1 }
+     ]
+   - Maps items to Stripe Checkout `line_items` using inline price_data:
+     - currency: "gbp"
+     - product_data.name: item.name
+     - unit_amount: Math.round(item.price * 100)  // convert to minor units
+     - quantity: item.quantity
+   - Calls `stripe.checkout.sessions.create` with:
+     {
+       mode: "payment",
+       line_items,
+       success_url: "https://your-frontend.com/success?session_id={CHECKOUT_SESSION_ID}",
+       cancel_url: "https://your-frontend.com/cancel"
+     }
+   - On success, returns an object: { url: session.url }.
+   - On failure, rethrows the error (do not swallow or mask it).
+
+RESTRICTIONS:
+- Do not change the function name.
+- Do not change the input shape or add parameters.
+- Do not add logging, comments, or extra utilities.
+- Do not create or modify any other files.
+- Do not mock Stripe; this must call Stripe’s real API (test mode via the provided key).
+
+DELIVERABLE:
+- Replace the contents of payment.js with the final implementation of `processPayment` that fulfills the above requirements.
+- Output only the complete final code for payment.js. No explanations, no extra text.
+
+
+//check on this domain later
+https://example.com/success?session_id=cs_test_a1vWkbGeqEAAa6twKso1mpzAvbDWj4S9LM3Ef9ItfOeANXNMJG0nxWSvtE

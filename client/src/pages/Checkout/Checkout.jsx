@@ -36,9 +36,9 @@ const Checkout = ({ checkoutData = [] }) => {
 
   return (
     <div>
-      <h1 className="heading center">Hello World</h1>
+      <h1 className="heading center">Stripe Payment</h1>
       <form onSubmit={handleSubmit}>
-        <button type="submit">Make Payment</button>
+        <button type="submit">Proceed to checkout</button>
       </form>
     </div>
   );
